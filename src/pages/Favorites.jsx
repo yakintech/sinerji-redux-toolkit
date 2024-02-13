@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { removeFavoriteAction } from '../store/slices/favoritesSlice';
+import { emptyFavoritesAction, removeFavoriteAction } from '../store/slices/favoritesSlice';
 
 function Favorites() {
+    
 
     const { favorites } = useSelector(state => state.favorite)
 
@@ -11,11 +12,17 @@ function Favorites() {
 
     const remove = (item) => {
         dispatch(removeFavoriteAction(item))
+        // dispatch({ type: 'favorites/removeFavoriteAction', payload: item })
+
     }
+
+    
 
     return (<>
 
         <h1>Favorites: {favorites.length}</h1>
+        <button onClick={() => dispatch(emptyFavoritesAction())}>Empty Favorites</button>
+        <hr />
 
         <table>
             <thead>

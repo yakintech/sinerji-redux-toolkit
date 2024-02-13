@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addFavorite } from '../store/slices/favoritesSlice'
+import { addFavorite, emptyFavorites } from '../store/slices/favoritesSlice'
 
 function Products() {
+
 
     const [products, setproducts] = useState([])
 
