@@ -7,10 +7,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllCustomers } from './store/slices/customerSlice'
 import Customers from './pages/Customers'
 import AddCustomer from './pages/AddCustomer'
+import { useGetTodosQuery } from './services/todoService'
+import Todos from './pages/Todos'
+
 
 function App() {
 
-  let dispatch = useDispatch()
+  let dispatch = useDispatch()  
 
   useEffect(() => {
     
@@ -27,6 +30,8 @@ function App() {
       <li><Link to='/favorites'>Favorites</Link></li>
       <li><Link to='/customers'>Customers</Link></li>
       <li><Link to='/add-customer'>Add Customer</Link></li>
+      <li><Link to='/todos'>Todos</Link></li>
+
 
 
     </ul>
@@ -37,6 +42,7 @@ function App() {
       <Route path='/favorites' element={<Favorites />} />
       <Route path='/customers' element={<Customers />} />
       <Route path='/add-customer' element={<AddCustomer />} />
+      <Route path='/todos' element={<Todos/>} />
     </Routes>
   
   </>

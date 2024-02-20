@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addNewCustomer } from '../store/slices/customerSlice'
 import { useSelector } from 'react-redux'
@@ -10,12 +10,21 @@ function AddCustomer() {
 
     let dispatch = useDispatch()
 
-    const {customers} = useSelector(state => state.customers)
+    const { customers } = useSelector(state => state.customers)
 
     const add = () => {
 
         dispatch(addNewCustomer({ companyName, contactName }))
     }
+
+
+    // useEffect(() => {
+
+    //     console.log("use Effect rendered!");
+
+
+    // }, [customers])
+
 
     return (<>
 

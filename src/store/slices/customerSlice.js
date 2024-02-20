@@ -20,14 +20,22 @@ export const addNewCustomer = createAsyncThunk(
     }
 )
 
+export const deleteCustomer = createAsyncThunk(
+    "customers/deleteCustomer",
+    (id) => {
+        return axios.delete(`https://northwind.vercel.app/api/customers/${id}`)
+            .then(response => {
+                return id
+            })
+    }
+)
 
 
 
 let initialState = {
     customers: [],
     loading: false,
-    error: ""
-}
+    error: ""}
 
 
 const customerSlice = createSlice({
@@ -37,6 +45,8 @@ const customerSlice = createSlice({
 
     },
     extraReducers: builder => {
+        
+        //fetch cases
         
         builder.addCase(fetchAllCustomers.pending, (state, action) => {
             state.loading = true;
@@ -56,6 +66,7 @@ const customerSlice = createSlice({
             state.error = action.error.message;
         })
 
+        //insert cases
         builder.addCase(addNewCustomer.pending, (state, action) => {
             state.loading = true;
             state.error = "";
@@ -68,6 +79,24 @@ const customerSlice = createSlice({
         })
 
         builder.addCase(addNewCustomer.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        })
+
+        //delete cases
+        builder.addCase(deleteCustomer.pending, (state, action) => {
+            state.loading = true;
+            state.error = "";
+        })
+
+        builder.addCase(deleteCustomer.fulfilled, (state, action) => {
+            state.loading = false;
+            state.customers = state.customers.filter(customer => customer.id !== action.payload);
+            state.error = "";
+
+        })
+
+        builder.addCase(deleteCustomer.rejected, (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         })
