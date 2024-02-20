@@ -89,9 +89,10 @@ const customerSlice = createSlice({
             state.error = "";
         })
 
-        builder.addCase(deleteCustomer.fulfilled, (state, action) => {
+        builder.addCase(deleteCustomer.fulfilled, async (state, action) => {
             state.loading = false;
             state.customers = state.customers.filter(customer => customer.id !== action.payload);
+
             state.error = "";
 
         })

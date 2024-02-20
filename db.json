@@ -1,0 +1,16 @@
+{
+  "cart": [
+    {
+      "id": 11,
+      "name": "Queso Cabrales",
+      "price": 21,
+      "quantity": 3
+    },
+    {
+      "id": 6,
+      "name": "Grandma's Boysenberry Spread",
+      "price": 25,
+      "quantity": 1
+    }
+  ]
+}
