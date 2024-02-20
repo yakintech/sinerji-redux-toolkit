@@ -3,12 +3,14 @@ import { useSelector } from 'react-redux'
 
 function Home() {
 
-    const counterSlice = useSelector(state => state.counter)
+  const state = useSelector(state => state)
+
+  console.log("state", state)
 
 
   return (<>
     <div>Home</div>
-    <h1>{counterSlice.value}</h1>
+
   </>
   )
 }

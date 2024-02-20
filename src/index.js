@@ -6,6 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from './store/slices/counterSlice';
 import favoriteReducer from './store/slices/favoritesSlice';
 import { BrowserRouter } from 'react-router-dom';
+import customerReducer from './store/slices/customerSlice';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,6 +15,7 @@ const store = configureStore({
   reducer: {
     counter: counterReducer,
     favorite: favoriteReducer,
+    customers: customerReducer
   },
 });
 
